@@ -2,6 +2,7 @@
 import unittest
 from base.demo0314 import RunMain
 import HTMLTestRunner
+from base.mock_test import mock_test
 
 class TestMethod(unittest.TestCase):
 
@@ -10,10 +11,15 @@ class TestMethod(unittest.TestCase):
 
     def test_01(self):
         url = 'https://coding.m.imooc.com/api/courselist'
-        data = {
+        request_data = {
             'page': 2
         }
-        res = self.run.run_main(url,'GET',data)
+        response_data = {
+            'page': 2,
+            'errorCode': 1001
+        }
+        # res = self.run.run_main(url,'GET',data)
+        res = mock_test(self.run.run_main,url,'GET',request_data,response_data)
         print(res)
 
     # @unittest.skip('test_02')
