@@ -1,6 +1,7 @@
 #coding=utf-8
 from base.runmethod import RunMethod
 from data.get_data import GetData
+import json
 
 class RunTest:
     def __init__(self):
@@ -27,4 +28,4 @@ if __name__ == '__main__':
     run = RunTest()
     res = run.go_on_run()
     for r in res:
-        print(r)
+        print(json.dumps(r,indent=2))
